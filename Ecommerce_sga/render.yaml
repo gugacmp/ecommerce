@@ -1,6 +1,6 @@
 eservices:
   - type: web
-    name: Ecommerce
+    name: ecommerce
     env: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn Ecommerce_sga.wsgi"
