@@ -6,7 +6,7 @@ services:
     startCommand: "gunicorn Ecommerce_sga.wsgi"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: seu_projeto.settings
+        value: ecommerce.settings
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
