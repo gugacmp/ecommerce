@@ -1,0 +1,338 @@
+.nfe-dashboard {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .nfe-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .nfe-table th, .nfe-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .nfe-table th {
+    background-color: #f7f7f7;
+    color: #333;
+  }
+  
+  .status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .status.autorizada {
+    background-color: #2ecc71;
+  }
+  
+  .status.rejeitada {
+    background-color: #e74c3c;
+  }
+  
+  .status.cancelada {
+    background-color: #e67e22;
+  }
+  
+  .status.denegada {
+    background-color: #9b59b6;
+  }
+  
+  .status.inutilizada {
+    background-color: #7f8c8d;
+  }
+
+  .filtro-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+  }
+  
+  .filtro-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    min-width: 150px;
+    flex: 1;
+  }
+  
+  .filtro-form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .filtro-form button:hover {
+    background-color: #2980b9;
+  }
+  /* Estilo para o formulário de filtro */
+.filtro-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px;
+  background-color: #f4f6f8;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.filtro-form input,
+.filtro-form select,
+.filtro-form button {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.filtro-form button {
+  background-color: #005eff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.filtro-form button:hover {
+  background-color: #0040c1;
+}
+
+/* Estilo da tabela */
+.nfe-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.nfe-table thead {
+  background-color: #005eff;
+  color: white;
+}
+
+.nfe-table th, .nfe-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.nfe-table tr:hover {
+  background-color: #f2f7ff;
+}
+
+/* Cores dos status */
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 13px;
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+.status.autorizada {
+  background-color: #e0f7e9;
+  color: #2e7d32;
+}
+
+.status.rejeitada {
+  background-color: #ffe0e0;
+  color: #c62828;
+}
+
+.status.cancelada {
+  background-color: #fff4e0;
+  color: #ef6c00;
+}
+
+.status.denegada {
+  background-color: #f3e5f5;
+  color: #6a1b9a;
+}
+
+.status.inutilizada {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .filtro-form {
+    flex-direction: column;
+  }
+
+  .nfe-table thead {
+    display: none;
+  }
+
+  .nfe-table tr {
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .nfe-table td {
+    display: block;
+    text-align: right;
+    padding: 8px;
+    position: relative;
+  }
+
+  .nfe-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+}
+
+/* Estilo para o formulário de filtro */
+.filtro-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px;
+    background-color: #f4f6f8;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .filtro-form input,
+  .filtro-form select,
+  .filtro-form button {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .filtro-form button {
+    background-color: #005eff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .filtro-form button:hover {
+    background-color: #0040c1;
+  }
+  
+  /* Estilo da tabela */
+  .nfe-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .nfe-table thead {
+    background-color: #005eff;
+    color: white;
+  }
+  
+  .nfe-table th, .nfe-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+  }
+  
+  .nfe-table tr:hover {
+    background-color: #f2f7ff;
+  }
+  
+  /* Cores dos status */
+  .status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: capitalize;
+    display: inline-block;
+  }
+  
+  .status.autorizada {
+    background-color: #e0f7e9;
+    color: #2e7d32;
+  }
+  
+  .status.rejeitada {
+    background-color: #ffe0e0;
+    color: #c62828;
+  }
+  
+  .status.cancelada {
+    background-color: #fff4e0;
+    color: #ef6c00;
+  }
+  
+  .status.denegada {
+    background-color: #f3e5f5;
+    color: #6a1b9a;
+  }
+  
+  .status.inutilizada {
+    background-color: #e3f2fd;
+    color: #1565c0;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .filtro-form {
+      flex-direction: column;
+    }
+  
+    .nfe-table thead {
+      display: none;
+    }
+  
+    .nfe-table tr {
+      display: block;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  
+    .nfe-table td {
+      display: block;
+      text-align: right;
+      padding: 8px;
+      position: relative;
+    }
+  
+    .nfe-table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+  }
+  

@@ -1,0 +1,47 @@
+.status-dashboard {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .card-status {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.3s;
+  }
+  
+  .card-status:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-status h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .card-status p {
+    margin: 10px 0 0;
+    font-size: 1.1rem;
+  }
+  
+  .card-status.aprovadas {
+    border-left: 6px solid #28a745;
+  }
+  
+  .card-status.analise {
+    border-left: 6px solid #ffc107;
+  }
+  
+  .card-status.canceladas {
+    border-left: 6px solid #dc3545;
+  }
+  

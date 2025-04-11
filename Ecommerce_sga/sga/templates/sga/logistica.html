@@ -1,0 +1,142 @@
+<!-- templates/dashboard/logistica.html -->
+<section class="frete-section">
+    <h2 class="titulo">Simulação de Frete</h2>
+  
+    <form id="form-frete" class="frete-form">
+      <div class="input-grid">
+        <div class="input-group">
+          <label for="peso">Peso (kg)</label>
+          <input type="number" name="peso" id="peso" placeholder="Ex: 1.5" step="0.01" required>
+        </div>
+        <div class="input-group">
+          <label for="cep_destino">CEP de destino</label>
+          <input type="text" name="cep_destino" id="cep_destino" placeholder="Ex: 01010-000" required>
+        </div>
+        <div class="input-group">
+          <label for="dimensoes">Dimensões (CxLxA)</label>
+          <input type="text" name="dimensoes" id="dimensoes" placeholder="Ex: 20x15x10" required>
+        </div>
+      </div>
+      <button type="submit" class="btn-calcular">Calcular Frete</button>
+    </form>
+  
+    <div id="frete-resultados" class="frete-resultados"></div>
+  </section>
+  
+  <style>
+    .frete-section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fdfdfd;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.08);
+    }
+  
+    .titulo {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+  
+    .frete-form .input-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+  
+    .input-group {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .input-group label {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+  
+    .input-group input {
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  
+    .btn-calcular {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+  
+    .btn-calcular:hover {
+      background-color: #2563eb;
+    }
+  
+    .frete-resultados {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+  
+    .frete-card {
+      background: white;
+      border: 1px solid #eee;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .frete-card .detalhes {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .frete-card strong {
+      font-size: 1.1rem;
+    }
+  </style>
+  
+  <script>
+  document.getElementById("form-frete").onsubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+  
+    const dados = {
+      peso: form.peso.value,
+      cep_destino: form.cep_destino.value,
+      dimensoes: form.dimensoes.value
+    };
+  
+    const res = await fetch("/api/logistica/frete/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dados)
+    });
+  
+    const opcoes = await res.json();
+    const div = document.getElementById("frete-resultados");
+  
+    if (opcoes.length === 0) {
+      div.innerHTML = "<p>Nenhuma transportadora disponível para os dados informados.</p>";
+      return;
+    }
+  
+    div.innerHTML = opcoes.map(f =>
+      `<div class="frete-card">
+        <div class="detalhes">
+          <strong>${f.transportadora}</strong>
+          <span>Prazo: ${f.prazo} dias úteis</span>
+        </div>
+        <div><strong>R$ ${Number(f.valor).toFixed(2)}</strong></div>
+      </div>`
+    ).join("");
+  };
+  </script>
+  

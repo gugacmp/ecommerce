@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Status de Vendas - Análise</title>
+  <link rel="stylesheet" href="{% static 'css/analise.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <script src="{% static 'js/script.js' %}" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <h1>Status de Vendas</h1>
+      <nav class="menu">
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'configurar_produto' %}">Configurar Produto</a>
+        <a href="{% url 'vendas' %}">Vendas</a>
+        <a href="{% url 'vendas_aprovadas' %}">Aprovadas</a>
+        <a href="{% url 'vendas_canceladas' %}">Canceladas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="status-dashboard">
+      <h2>Status de Análise de Vendas</h2>
+      <div class="cards-grid">
+        <div class="card-status aprovadas">
+          <h3>Aprovadas</h3>
+          <p id="total-aprovadas">Total: <strong>15</strong></p>
+        </div>
+        <div class="card-status analise">
+          <h3>Em Análise</h3>
+          <p id="total-analise">Total: <strong>5</strong></p>
+        </div>
+        <div class="card-status canceladas">
+          <h3>Canceladas</h3>
+          <p id="total-canceladas">Total: <strong>3</strong></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Campos | Monitoramento em tempo real</p>
+  </footer>
+</body>
+</html>

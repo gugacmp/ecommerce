@@ -1,0 +1,77 @@
+<!-- templates/integrador.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Integração Marketplaces - SgaSoftt</title>
+  <link rel="stylesheet" href="{% static 'css/integrador.css' %}">
+  <!--<link rel="stylesheet" href="{% static 'css/index.css' %}">-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <h1>Integração com Marketplaces</h1>
+      <nav class="menu">
+        <a href="{% url 'index' %}">Início</a>
+        <a href="{% url 'vendas' %}">Vendas</a>
+        <a href="{% url 'processar_pagamentos' %}">Pagamentos</a>
+        <a href="{% url 'logistica' %}">Frete</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="integrador">
+    <section class="conexoes">
+      <h2>Marketplaces Conectados</h2>
+      <div class="cards">
+        <div class="card conectado">
+          <h3>Mercado Livre</h3>
+          <p>Status: Conectado</p>
+        </div>
+        <div class="card conectado">
+          <h3>Shopee</h3>
+          <p>Status: Conectado</p>
+        </div>
+        <div class="card desconectado">
+          <h3>Amazon</h3>
+          <p>Status: Desconectado</p>
+          <button>Conectar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="grafico">
+      <h2>Desempenho de Vendas</h2>
+      <canvas id="grafico-vendas" width="500" height="100"></canvas>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Campos | Integração com Marketplaces</p>
+  </footer>
+
+  <script>
+    const ctx = document.getElementById('grafico-vendas');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Mercado Livre', 'Shopee', 'Amazon'],
+        datasets: [{
+          label: 'Vendas (R$)',
+          data: [12000, 8000, 3000],
+          backgroundColor: ['#FFE600', '#EE4D2D', '#FF9900']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Comparativo de Vendas por Marketplace' }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

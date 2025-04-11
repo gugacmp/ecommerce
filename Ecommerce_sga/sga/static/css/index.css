@@ -1,0 +1,104 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+    color: #333;
+  }
+  
+  .navbar {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .menu a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+  }
+  
+  .menu a:hover {
+    text-decoration: underline;
+  }
+  
+  .dashboard {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  
+  .welcome h2 {
+    margin-top: 0;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background: #fff;
+    border-top: 1px solid #eaeaea;
+    margin-top: 50px;
+  }
+  
+  .ranking {
+    margin: 40px auto;
+    padding: 17px;
+    max-width: 600px;
+    background: #f7f9fb;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .ranking h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .ranking-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .ranking-list li {
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-weight: 500;
+    background-color: #ffffff;
+    border-left: 6px solid #ccc;
+    transition: all 0.3s ease;
+  }
+  
+  .ranking-list li:hover {
+    transform: scale(1.02);
+    background-color: #f1f3f5;
+  }
+  
+  .ranking-list .top1 {
+    border-left-color: gold;
+    background-color: #fffbea;
+  }
+  .ranking-list .top2 {
+    border-left-color: silver;
+    background-color: #f0f2f5;
+  }
+  .ranking-list .top3 {
+    border-left-color: #cd7f32;
+    background-color: #fdf4ed;
+  }
+  

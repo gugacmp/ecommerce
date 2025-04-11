@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>SIE - CAMPOS</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <h1>Bem-vindo ao Painel Campos</h1>
+      <nav class="menu">
+        <a href="{% url 'configurar_produto' %}">Produto</a>
+        <a href="{% url 'vendas' %}">Vendas</a>
+        <a href="{% url 'nfe_gerenciamento' %}">NF-e</a>
+        <a href="{% url 'processar_pagamentos' %}">Pagamentos</a>
+        <a href="{% url 'vendas_aprovadas' %}">Aprovadas</a>
+        <a href="{% url 'vendas_analise' %}">Análise</a>
+        <a href="{% url 'vendas_canceladas' %}">Canceladas</a>
+        <a href="{% url 'integrador' %}">Hub</a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="welcome">
+      <h2>Resumo Geral</h2>
+      <p>Acompanhe a movimentação do seu e-commerce com agilidade.</p>
+    </section>
+
+    <!-- Ranking de Itens Mais Vendidos -->
+    <section class="ranking">
+      <h2>🏆 Itens Mais Vendidos</h2>
+      <ol class="ranking-list">
+        <li class="top1">🥇 Camisa Polo — 120 vendas</li>
+        <li class="top2">🥈 Tênis Esportivo — 95 vendas</li>
+        <li class="top3">🥉 Relógio Digital — 80 vendas</li>
+        <li>Fone Bluetooth — 76 vendas</li>
+        <li>Calça Jeans — 65 vendas</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Campos | Desenvolvido para gestão eficiente</p>
+  </footer>
+
+  <script src="{% static 'js/script.js' %}" defer></script>
+</body>
+</html>

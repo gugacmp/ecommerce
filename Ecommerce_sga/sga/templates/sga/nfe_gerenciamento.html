@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciamento de NF-e</title>
+  <link rel="stylesheet" href="{% static 'css/nfe.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <h1>Gerenciamento de NF-e</h1>
+      <nav class="menu">
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'vendas' %}">Vendas</a>
+        <a href="{% url 'processar_pagamentos' %}">Pagamentos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="nfe-dashboard">
+    <h2>Status das Notas Fiscais</h2>
+
+    <!-- Filtros -->
+    <form method="GET" class="filtro-form">
+      <input type="date" name="data" placeholder="Data">
+      <input type="text" name="numero" placeholder="Nº Documento">
+      <input type="text" name="chave" placeholder="Chave da Nota">
+      <input type="text" name="cliente" placeholder="Cliente">
+      <select name="status">
+        <option value=""> Status </option>
+        <option value="autorizada">Autorizada</option>
+        <option value="rejeitada">Rejeitada</option>
+        <option value="cancelada">Cancelada</option>
+        <option value="denegada">Denegada</option>
+        <option value="inutilizada">Inutilizada</option>
+      </select>
+      <button type="submit">Filtrar</button>
+    </form>
+
+    <!-- Tabela -->
+    <table class="nfe-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Data</th>
+          <th>Cliente</th>
+          <th>Produto</th>
+          <th>Valor</th>
+          <th>Nº Documento</th>
+          <th>Chave</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0001</td>
+          <td>2025-04-03</td>
+          <td>João Silva</td>
+          <td>Camisa Polo</td>
+          <td>R$ 100</td>
+          <td>14523</td>
+          <td>35190400000000000123550010000014521000014523</td>
+          <td><span class="status autorizada">Autorizada</span></td>
+        </tr>
+        <tr>
+          <td>0002</td>
+          <td>2025-04-02</td>
+          <td>Maria Oliveira</td>
+          <td>Tênis</td>
+          <td>R$ 250</td>
+          <td>14524</td>
+          <td>35190400000000000123550010000014521000014524</td>
+          <td><span class="status rejeitada">Rejeitada</span></td>
+        </tr>
+        <tr>
+          <td>0004</td>
+          <td>2025-04-01</td>
+          <td>Fernanda Lima</td>
+          <td>Notebook</td>
+          <td>R$ 3200</td>
+          <td>14525</td>
+          <td>35190400000000000123550010000014521000014525</td>
+          <td><span class="status denegada">Denegada</span></td>
+        </tr>
+        <tr>
+          <td>0005</td>
+          <td>2025-03-30</td>
+          <td>Pedro Nunes</td>
+          <td>Fone de Ouvido</td>
+          <td>R$ 89</td>
+          <td>14526</td>
+          <td>35190400000000000123550010000014521000014526</td>
+          <td><span class="status inutilizada">Inutilizada</span></td>
+        </tr>
+
+        {% for nota in notas %}
+        <tr>
+          <td>{{ nota.id }}</td>
+          <td>{{ nota.data }}</td>
+          <td>{{ nota.cliente }}</td>
+          <td>{{ nota.produto }}</td>
+          <td>R$ {{ nota.valor }}</td>
+          <td>{{ nota.numero }}</td>
+          <td>{{ nota.chave }}</td>
+          <td><span class="status {{ nota.status }}">{{ nota.status|title }}</span></td>
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Campos | NF-e Management Module</p>
+  </footer>
+
+  <script src="{% static 'js/script.js' %}" defer></script>
+</body>
+</html>

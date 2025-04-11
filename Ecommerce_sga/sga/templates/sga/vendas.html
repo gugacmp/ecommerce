@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Vendas</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/vendas.css' %}">
+  <script src="{% static 'js/script.js' %}" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <h1>Lista de Vendas</h1>
+      <nav class="menu">
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'configurar_produto' %}">Configurar Produto</a>
+        <a href="{% url 'vendas_aprovadas' %}">Aprovadas</a>
+        <a href="{% url 'vendas_analise' %}">Análise</a>
+        <a href="{% url 'vendas_canceladas' %}">Canceladas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="vendas-section">
+      <h2>Todas as Vendas</h2>
+
+      <div class="filtros">
+        <input type="text" id="filtro-nome" placeholder="Filtrar por nome...">
+        <select id="filtro-status">
+          <option value="">Todos os status</option>
+          <option value="aprovado">Aprovado</option>
+          <option value="analise">Em Análise</option>
+          <option value="cancelado">Cancelado</option>
+        </select>
+      </div>
+
+      <table class="tabela-vendas">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Foto</th>
+            <th>Preço</th>
+            <th>Tamanho</th>
+            <th>Cor</th>
+            <th>Quantidade</th>
+            <th>Estoque</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for venda in vendas %}
+          <tr>
+            <td>{{ venda.codigo }}</td>
+            <td>{{ venda.nome }}</td>
+            <td><img src="{{ venda.foto.url }}" width="50"></td>
+            <td>R$ {{ venda.preco }}</td>
+            <td>{{ venda.tamanho }}</td>
+            <td>{{ venda.cor }}</td>
+            <td>{{ venda.quantidade }}</td>
+            <td>{{ venda.estoque }}</td>
+            <td>R$ {{ venda.total }}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="9">Nenhuma venda cadastrada.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Campos | Gerenciamento de Vendas</p>
+  </footer>
+</body>
+</html>

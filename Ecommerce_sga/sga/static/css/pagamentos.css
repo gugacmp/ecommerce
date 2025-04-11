@@ -1,0 +1,27 @@
+.status {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+  }
+  .status.aprovado {
+    background-color: #28a745;
+  }
+  .status.analise {
+    background-color: #ffc107;
+    color: #212529;
+  }
+  .status.cancelado {
+    background-color: #dc3545;
+  }
+  .tabela-vendas {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  .tabela-vendas th, .tabela-vendas td {
+    padding: 12px;
+    border-bottom: 1px solid #eaeaea;
+  }
+  

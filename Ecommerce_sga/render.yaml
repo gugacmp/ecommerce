@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: meu-site-django
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn seu_projeto.wsgi"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: seu_projeto.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"

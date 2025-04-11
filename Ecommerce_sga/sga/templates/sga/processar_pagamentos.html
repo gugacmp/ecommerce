@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Processar Pagamentos</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{% static 'js/script.js' %}" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <h1>Processamento de Pagamentos</h1>
+      <nav class="menu">
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'vendas' %}">Vendas</a>
+        <a href="{% url 'vendas_aprovadas' %}">Aprovadas</a>
+        <a href="{% url 'vendas_canceladas' %}">Canceladas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <!-- Gráfico dos Status -->
+    <section class="grafico-area">
+      <h2>Resumo dos Pagamentos</h2>
+      <canvas id="graficoPagamentos"></canvas>
+    </section>
+
+    <!-- Tabela dos Pagamentos -->
+    <section class="tabela-area">
+      <h2>Detalhes dos Pagamentos</h2>
+      <table class="tabela-vendas">
+        <thead>
+          <tr>
+            <th>ID</th><th>Cliente</th><th>Produto</th><th>Valor</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#001</td><td>Ana</td><td>Camisa Polo</td><td>R$ 100</td><td><span class="status aprovado">Aprovado</span></td>
+          </tr>
+          <tr>
+            <td>#004</td><td>Carlos</td><td>Camisa Mizuno</td><td>R$ 120</td><td><span class="status aprovado">Aprovado</span></td>
+          </tr>
+          <tr>
+            <td>#005</td><td>Jose</td><td>Camisa Nike</td><td>R$ 150</td><td><span class="status aprovado">Aprovado</span></td>
+          </tr>
+          <tr>
+            <td>#002</td><td>Bruno</td><td>Fone Bluetooth</td><td>R$ 200</td><td><span class="status analise">Em Análise</span></td>
+          </tr>
+          <tr>
+            <td>#003</td><td>Carla</td><td>Relógio</td><td>R$ 150</td><td><span class="status cancelado">Cancelado</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Campos | Processamento de Pagamentos</p>
+  </footer>
+
+  <script>
+    const ctx = document.getElementById('graficoPagamentos').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Aprovado', 'Em Análise', 'Cancelado'],
+        datasets: [{
+          label: 'Pagamentos',
+          data: [3, 1, 1], // Substitua pelos valores reais com Django se quiser
+          backgroundColor: ['#28a745', '#ffc107', '#dc3545'],
+          borderRadius: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Status dos Pagamentos'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              precision: 0
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
