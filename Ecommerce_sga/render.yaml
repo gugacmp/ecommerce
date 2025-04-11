@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: meu-site-django
+    name: ecommerce
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn seu_projeto.wsgi"
+    startCommand: "gunicorn Ecommerce_sga.wsgi"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: seu_projeto.settings
